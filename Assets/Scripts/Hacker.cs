@@ -6,15 +6,12 @@ public class Hacker : MonoBehaviour
 {
     // Game configuration data
     string[] level1Passwords = { "books", "aisle", "shelf", "password", "font", "borrow" };
-    string[] level2Passwords = { "homocide", "locker", "detective", "window", "badge", "fingerprint"};
+    string[] level2Passwords = { "homocide", "arrest", "detective", "uniform", "holster", "fingerprint"};
 
     int currentLevel;
     string password;
     enum Screen { MainMenu, PasswordEntry, Win};
     Screen state = Screen.MainMenu;
-
-    string[] passwords = new string[] { "book", "shotgun", "satellite" };
-
 
     // Start is called before the first frame update
     void Start()
@@ -65,21 +62,11 @@ public class Hacker : MonoBehaviour
 
     private void HandleMenuSelection(string input)
     {
-        if (input == "1")
+        bool isValidLevel = (input == "1" || input == "2");
+
+        if (isValidLevel)
         {
-            currentLevel = 1;
-            password = level1Passwords[2]; // todo: make random later
-            StartGame();
-        }
-        else if (input == "2")
-        {
-            currentLevel = 2;
-            password = level2Passwords[4];
-            StartGame();
-        }
-        else if (input == "3")
-        {
-            currentLevel = 3;
+            currentLevel = int.Parse(input);
             StartGame();
         }
         else if (input == "007")
@@ -95,7 +82,19 @@ public class Hacker : MonoBehaviour
     private void StartGame()
     {
         state = Screen.PasswordEntry;
-        Terminal.WriteLine("You have selected level " + currentLevel);
+        Terminal.ClearScreen();
+        switch(currentLevel)
+        {
+            case 1:
+                password = level1Passwords[0];
+                break;
+            case 2:
+                password = level2Passwords[3];
+                break;
+            default:
+                Debug.LogError("Invalid level number");
+                break;
+        }
         Terminal.WriteLine("Please enter password: ");
     }
 
