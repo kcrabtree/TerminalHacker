@@ -8,8 +8,8 @@ public class Hacker : MonoBehaviour
 
     int currentLevel;
     string password;
-    enum Screen { MainMenu, PasswordEntry, Win};
-    Screen state = Screen.MainMenu;
+    enum State { MainMenu, PasswordEntry, Win};
+    State state = State.MainMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +22,13 @@ public class Hacker : MonoBehaviour
         if (input == "menu")
         {
             DisplayMainMenu();
-        } else if (state == Screen.MainMenu)
+        } else if (state == State.MainMenu)
         {
             HandleMenuSelection(input);
-        } else if (state == Screen.PasswordEntry)
+        } else if (state == State.PasswordEntry)
         {
             CheckPassword(input);
-        } else if (state == Screen.Win)
+        } else if (state == State.Win)
         {
             Terminal.WriteLine("Go again?");
         }
@@ -37,25 +37,59 @@ public class Hacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Random.Range(0, level1Passwords.Length));
+
     }
 
     private void CheckPassword(string input)
     {
         if (input == password)
         {
-            DisplayWinMessage();
+            DisplayWinScreen();
         }
         else
         {
-            Terminal.WriteLine("Incorrect password, please try again:");
+            Terminal.WriteLine("Incorrect password.");
         }
     }
 
-    private void DisplayWinMessage()
+    private void DisplayWinScreen()
     {
-        state = Screen.Win;
-        Terminal.WriteLine("Access granted. Congratulations!");
+        state = State.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+    }
+
+    private void ShowLevelReward()
+    {
+        switch (currentLevel)
+        {
+            case 1:
+                Terminal.WriteLine("Clever, eh? Have a book..");
+                Terminal.WriteLine(@"
+    ________
+   /       //
+  /       //
+ /_______//
+(_______(/
+                ");
+                break;
+            case 2:
+                Terminal.WriteLine("Nice. You could give Sherlock Holmes a run for his money!");
+                Terminal.WriteLine(@"
+        _,--,            _
+   __,-'____| ___      /' |
+ /'   `\,--,/'   `\  /'   |
+(       )  (       )'
+ \_   _/'  `\_   _/
+   '''        '''
+
+                ");
+                break;
+            default:
+                Debug.LogError("Unable to display level reward for invalid level: " + currentLevel);
+                break;
+        }
+        
     }
 
     private void HandleMenuSelection(string input)
@@ -79,7 +113,7 @@ public class Hacker : MonoBehaviour
 
     private void StartGame()
     {
-        state = Screen.PasswordEntry;
+        state = State.PasswordEntry;
         Terminal.ClearScreen();
         switch(currentLevel)
         {
@@ -98,7 +132,7 @@ public class Hacker : MonoBehaviour
 
     private void DisplayMainMenu()
     {
-        state = Screen.MainMenu;
+        state = State.MainMenu;
         Terminal.ClearScreen();
         Terminal.WriteLine("Who are you targeting today?");
         Terminal.WriteLine("");
