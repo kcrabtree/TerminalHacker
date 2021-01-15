@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
@@ -39,7 +37,7 @@ public class Hacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        print(Random.Range(0, level1Passwords.Length));
     }
 
     private void CheckPassword(string input)
@@ -86,10 +84,10 @@ public class Hacker : MonoBehaviour
         switch(currentLevel)
         {
             case 1:
-                password = level1Passwords[0];
+                password = level1Passwords[Random.Range(0, level1Passwords.Length)];
                 break;
             case 2:
-                password = level2Passwords[3];
+                password = level2Passwords[Random.Range(0, level2Passwords.Length)];
                 break;
             default:
                 Debug.LogError("Invalid level number");
