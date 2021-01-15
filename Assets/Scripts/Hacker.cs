@@ -127,7 +127,7 @@ public class Hacker : MonoBehaviour
                 Debug.LogError("Invalid level number");
                 break;
         }
-        Terminal.WriteLine("Please enter password: ");
+        Terminal.WriteLine("Enter password. Hint: " + password.Anagram());
     }
 
     private void DisplayMainMenu()
