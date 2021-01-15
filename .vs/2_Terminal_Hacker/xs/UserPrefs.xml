@@ -1,20 +1,22 @@
 ﻿<Properties StartupConfiguration="{81328C18-17CF-B3F4-46D8-CC1DDC0FB7F0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/WM2000/Terminal/Terminal.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Hacker.cs">
     <Files>
-      <File FileName="Assets/Scripts/Hacker.cs" Line="21" Column="56" />
-      <File FileName="Assets/WM2000/Terminal/Terminal.cs" Line="28" Column="1" />
+      <File FileName="Assets/Scripts/Hacker.cs" Line="16" Column="25" />
+      <File FileName="Assets/WM2000/Terminal/Terminal.cs" Line="49" Column="39" />
+      <File FileName="Assets/WM2000/Utility.cs" Line="1" Column="1" />
+      <File FileName="Assets/WM2000/Terminal/InputBuffer.cs" Line="1" Column="1" />
+      <File FileName="Assets/WM2000/Terminal/DisplayBuffer.cs" Line="1" Column="1" />
+      <File FileName="Assets/WM2000/Keyboard/Keyboard.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="2_Terminal_Hacker" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-              <Node name="WM2000" expanded="True">
-                <Node name="Terminal" expanded="True">
-                  <Node name="Terminal.cs" selected="True" />
-                </Node>
+              <Node name="Scripts" expanded="True">
+                <Node name="Hacker.cs" selected="True" />
               </Node>
+              <Node name="WM2000" expanded="True" />
             </Node>
           </Node>
         </State>
